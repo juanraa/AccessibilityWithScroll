@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" x:Class="AccessibilityScroll.MainPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>        
+                <StackLayout
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="15"
+                    Spacing="10"
+                    AutomationProperties.IsInAccessibleTree="False">
+                    <Label
+                        Margin="0,20,0,0"
+                        Text="Dogs have four legs and make a bark, woof, or arf sound."
+                        VerticalTextAlignment="Center"
+                        AutomationProperties.IsInAccessibleTree="True"
+                        TabIndex="1"/>
+                    <ListView
+                        ItemsSource="{Binding Dogs}"
+                        BackgroundColor="Transparent"                
+                        SelectionMode="None"
+                        AutomationProperties.IsInAccessibleTree="True"                
+                        TabIndex="2">                
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                    <StackLayout
+                                        HorizontalOptions="FillAndExpand"
+                                        Padding="5"
+                                        Spacing="0">
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            FontSize="13"
+                                            Style="{DynamicResource label-primary-body-small-regular}"
+                                            Text="{Binding Name}"
+                                            VerticalTextAlignment="Center"
+                                            AutomationProperties.IsInAccessibleTree="True"
+                                            AutomationProperties.Name="{Binding Name}"
+                                            IsTabStop="False"
+                                            TabIndex="3"/>
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            FontAttributes="Bold"
+                                            LineBreakMode="TailTruncation"
+                                            Style="{DynamicResource label-primary-body-regular}"
+                                            Text="{Binding Breed}"
+                                            VerticalTextAlignment="Center"
+                                            AutomationProperties.IsInAccessibleTree="True"
+                                            AutomationProperties.Name="{Binding Location}"
+                                            TabIndex="4"/>
+                                    </StackLayout>
+                                    <BoxView
+                                        HeightRequest="0.5"
+                                        HorizontalOptions="FillAndExpand"
+                                        Color="{DynamicResource LightGreyColor}"
+                                        AutomationProperties.IsInAccessibleTree="False"/>
+                                </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Text="The dog is a domesticated carnivoran of the family Canidae. It is part of the wolf-like canids, and is the most widely abundant terrestrial carnivore."
+                            AutomationProperties.IsInAccessibleTree="True"
+                            TabIndex="3"/>
+                </StackLayout>    
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
